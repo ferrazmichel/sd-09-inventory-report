@@ -2,6 +2,8 @@ from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 import csv
 import json
+# https://linuxhint.com/python_xml_to_dictionary/
+# Utilizado para ler o arquivo xml
 import xmltodict
 
 
