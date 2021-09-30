@@ -18,7 +18,7 @@ class filter_info:
         dates.sort()
         return dates[0]
 
-    # lógica retirada de:
+    # Lógica retirada de:
     # https://www.geeksforgeeks.org/python-find-most-frequent-element-in-a-list/
     @staticmethod
     def best_company(list):
