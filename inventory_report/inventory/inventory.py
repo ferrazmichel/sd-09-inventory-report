@@ -1,4 +1,5 @@
 import csv
+import json
 import pathlib
 from inventory_report.reports.simple_report import SimpleReport
 
@@ -11,8 +12,7 @@ class Inventory:
             if file_extension == '.csv':
                 return list(csv.DictReader(file))
             if file_extension == '.json':
-                # TODO -> READ JSON FILE
-                return False
+                return json.load(file)
             if file_extension == '.xml':
                 # TODO -> READ XML FILE
                 return False
