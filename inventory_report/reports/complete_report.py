@@ -19,4 +19,3 @@ class CompleteReport(SimpleReport):
         simple_report = super().generate(data_list)
         products_report = products_by_company.generate_report(data_list)
         return f'{simple_report}\n{products_report}'
-

@@ -33,4 +33,3 @@ class Inventory:
             return SimpleReport.generate(file_content)
         elif report_type == "completo":
             return CompleteReport.generate(file_content)
-
