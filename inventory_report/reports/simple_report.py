@@ -1,4 +1,5 @@
 import datetime
+from typing import Counter
 
 
 class Manage_list:
@@ -22,8 +23,8 @@ class Manage_list:
     """seleciona o mais velho fabricado"""
     @staticmethod
     def old_item(list):
-        vraw = sorted(list, key=lambda k: k['data_de_fabricacao'])
-        return vraw[0].get('data_de_fabricacao')
+        data_sorted = sorted(list, key=lambda k: k['data_de_fabricacao'])
+        return data_sorted[0].get('data_de_fabricacao')
 
     """seleciona o mais perto de vencer a validade"""
     @staticmethod
@@ -35,11 +36,16 @@ class Manage_list:
         min_value = min(min_days)
         return list[min_days.index(min_value)].get('data_de_validade')
 
-    """conta qual empresa tem o maior volume de estoque"""
+    """conta qual empresa tem o maior volume de estoque com opçao 0
+    e todos estoques opçao n"""
     @staticmethod
-    def count_stock(list):
-        choice = [vraw['nome_da_empresa'] for vraw in list]
-        return max(set(choice), key=choice.count)
+    def count_stock(list, option):
+        list_names = [name['nome_da_empresa'] for name in list]
+        ocorrencias = Counter(list_names)
+        if (option == 0):
+            return max(set(list_names), key=list_names.count)
+        else:
+            return ocorrencias
 
 
 class SimpleReport:
@@ -48,7 +54,7 @@ class SimpleReport:
     def generate(list):
         result_old = Manage_list.old_item(list)
         result_closest = Manage_list.validate_closest(list)
-        result_stock = Manage_list.count_stock(list)
+        result_stock = Manage_list.count_stock(list, 0)
 
         return (
             'Data de fabricação mais antiga: {}\n'
