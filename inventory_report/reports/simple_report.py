@@ -28,12 +28,12 @@ class SimpleReport:
 
             empresa = line["nome_da_empresa"]
             estoque_empresa.append(empresa)
-        print(estoque_empresa)
 
         empresa_com_mais_produtos = SimpleReport.maior_estoque(estoque_empresa)
 
         return (
-            f"Data de fabricação mais antiga: {data_fabricacao_mais_antiga}\n" +
+            "Data de fabricação mais antiga: " +
+            f"{data_fabricacao_mais_antiga}\n" +
             f"Data de validade mais próxima: {data_validade_mais_proxima}\n" +
             "Empresa com maior quantidade de produtos " +
             f"estocados: {empresa_com_mais_produtos}\n"

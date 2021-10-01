@@ -1,3 +1,3 @@
-estoque_empresa.append(
-                 empresa,
-            )
+# estoque_empresa.append(
+#                  empresa,
+#             )
