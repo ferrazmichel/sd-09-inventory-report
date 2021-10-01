@@ -42,5 +42,4 @@ class Inventory(CompleteReport, SimpleReport):
             return CompleteReport.generate(list)
 
 
-
 # print(Inventory.import_data(path_csv, 'simples'))
