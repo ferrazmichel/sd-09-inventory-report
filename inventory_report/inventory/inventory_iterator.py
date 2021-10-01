@@ -1,4 +1,7 @@
-class InventoryIterator:
+from _collections_abc import Iterator
+
+
+class InventoryIterator(Iterator):
     def __init__(self, data):
         self.data = data
         self.index = 0
@@ -7,7 +10,6 @@ class InventoryIterator:
 
         try:
             current_value = self.data[self.index]
-
         except IndexError:
             raise StopIteration()
 

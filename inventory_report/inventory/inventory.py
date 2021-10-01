@@ -15,7 +15,6 @@ def read_csv(file_path):
     with open(file_path) as file:
         data = csv.DictReader(file)
         new_data = [row for row in data]
-        print(new_data)
         return new_data
 
 
