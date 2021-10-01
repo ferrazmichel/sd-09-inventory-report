@@ -25,10 +25,10 @@ class SimpleReport:
     @classmethod
     def generate(cls, obj_list=[{}]):
         return (
-            f"Data de fabricação mais antiga: "
+            "Data de fabricação mais antiga: "
             f"{cls.get_oldest_fabricated_date(obj_list)}\n"
-            f"Data de validade mais próxima: "
+            "Data de validade mais próxima: "
             f"{cls.get_closest_expiration_date(obj_list)}\n"
-            f"Empresa com maior quantidade de produtos estocados: "
+            "Empresa com maior quantidade de produtos estocados: "
             f"{cls.get_company_name_with_greater_stock(obj_list)}\n"
         )
