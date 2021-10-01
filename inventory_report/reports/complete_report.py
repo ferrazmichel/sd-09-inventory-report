@@ -3,6 +3,7 @@ from inventory_report.reports.simple_report import SimpleReport, Manage_list
 
 class CompleteReport(SimpleReport, Manage_list):
     """gerador de relatorio - herdada da classe SimpleReport"""
+    @staticmethod
     def generate(list):
         result_simple_report = SimpleReport.generate(list)
         result_manage_list = Manage_list.count_stock(list, 1)
