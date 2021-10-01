@@ -2,13 +2,13 @@ from datetime import datetime
 
 
 class filter_info:
-    @staticmethod
-    def oldest_manufacture(list):
+    @classmethod
+    def oldest_manufacture(cls, list):
         oldest_date = min([item["data_de_fabricacao"] for item in list])
         return oldest_date
 
-    @staticmethod
-    def next_exipred_date(list):
+    @classmethod
+    def next_exipred_date(cls, list):
         current_date = datetime.now().strftime("%Y-%m-%d")
         dates = [
             row["data_de_validade"]
@@ -20,15 +20,15 @@ class filter_info:
 
     # lógica retirada de:
     # https://www.geeksforgeeks.org/python-find-most-frequent-element-in-a-list/
-    @staticmethod
-    def best_company(list):
+    @classmethod
+    def best_company(cls, list):
         companies = [row["nome_da_empresa"] for row in list]
         return max(set(companies), key=companies.count)
 
 
 class SimpleReport:
-    @staticmethod
-    def generate(list):
+    @classmethod
+    def generate(cls, list):
         man_date = filter_info.oldest_manufacture(list)
         exp_date = filter_info.next_exipred_date(list)
         best_cmp = filter_info.best_company(list)
