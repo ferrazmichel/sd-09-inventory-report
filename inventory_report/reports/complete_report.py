@@ -3,10 +3,11 @@ from inventory_report.reports.simple_report import SimpleReport
 
 class CompleteReport(SimpleReport):
     @classmethod
-    def generate(cls, dictList):
-        simple_report = super().generate(dictList)
+    def quantity_report(cls, dictList):
         quantidade_empresa = {}
+        print(dictList)
         for list in dictList:
+            print(list)
             empresa = list["nome_da_empresa"]
             contador = 0
             for list2 in dictList:
@@ -17,9 +18,13 @@ class CompleteReport(SimpleReport):
         mensagem_de_quantidade = ""
         for item in quantidade_empresa:
             mensagem_de_quantidade += f"- {item}: {quantidade_empresa[item]}\n"
+        return mensagem_de_quantidade
 
+    @classmethod
+    def generate(cls, dictList):
+        simple_report = super().generate(dictList)
         return (
             f"{simple_report}\n" +
             "Produtos estocados por empresa: \n"
-            f"{mensagem_de_quantidade}"
+            f"{cls.quantity_report(dictList)}"
         )
