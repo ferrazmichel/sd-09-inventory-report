@@ -4,7 +4,8 @@ from inventory_report.reports.complete_report import CompleteReport
 
 
 class Inventory:
-    def import_data(csvList, type_report):
+    @classmethod
+    def import_data(cls, csvList, type_report):
         with open(csvList) as file:
             empresas = csv.DictReader(file, delimiter=",", quotechar='"')
             if type_report == "simples":
