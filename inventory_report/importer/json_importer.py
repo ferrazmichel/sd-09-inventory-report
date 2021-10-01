@@ -1,11 +1,14 @@
 import json
-from importer import Importer
+from .importer import Importer
 
 
 class JsonImporter(Importer):
-    def __init__(self, file_name):
-        self.file_name = file_name
-
-    def import_json(self):
-        with open(self.file_name, 'r') as f:
-            return json.load(f)
+    def import_data(file_name):
+        if 'json' in file_name:
+            with open(file_name) as json_file:
+                data = json.load(json_file)
+                new_data = [row for row in data]
+                return new_data
+        else:
+            raise ValueError("Arquivo inválido")
+    pass
