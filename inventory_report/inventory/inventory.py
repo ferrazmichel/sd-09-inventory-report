@@ -1,3 +1,4 @@
+from xml.etree.ElementTree import XMLID
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
@@ -22,19 +23,53 @@ from inventory_report.reports.complete_report import CompleteReport
 
 from functools import lru_cache
 from csv import DictReader
-
-
-path_csv = 'inventory_report/data/inventory.csv'
+import json
+from xml.etree import ElementTree
+import os.path
+# path_csv = 'inventory_report/data/inventory.json'
 
 
 # class Inventory(SimpleReport, CompleteReport):
 class Inventory(CompleteReport, SimpleReport):
 
     @lru_cache
+    def import_data_csv(path):
+        with open(path, 'r', encoding='utf8') as file:
+            spam_reader = DictReader(file)
+            read_list = [rows for rows in spam_reader]
+            return read_list
+
+    @lru_cache
+    def import_data_json(path):
+        with open(path) as file:
+            json_reader = json.load(file)
+            read_list = [rows for rows in json_reader]
+            return read_list
+
+    @lru_cache
+    def import_data_xml(path):
+        tree = ElementTree.parse(path)
+        root = tree.getroot()
+        read_list = []
+        for elem in root:
+            items = {}
+            for subelem in elem:
+                items[subelem.tag] = subelem.text
+                # print(subelem.text)
+            read_list.append(items)
+        return read_list
+
     def import_data(path, option):
-        with open(path, 'r', encoding='utf8') as csvfile:
-            spamreader = DictReader(csvfile)
-            list = [rows for rows in spamreader]
+        extension = os.path.splitext(path)[1]
+
+        if(extension == '.csv'):
+            list = Inventory.import_data_csv(path)
+        elif(extension == '.json'):
+            list = Inventory.import_data_json(path)
+        elif(extension == '.xml'):
+            list = Inventory.import_data_xml(path)
+        else:
+            raise ValueError('Arquivo inválido')
 
         if(option == 'simples'):
             return SimpleReport.generate(list)
@@ -42,4 +77,4 @@ class Inventory(CompleteReport, SimpleReport):
             return CompleteReport.generate(list)
 
 
-# print(Inventory.import_data(path_csv, 'simples'))
+# print(Inventory.import_data(path_csv, 'complete'))
