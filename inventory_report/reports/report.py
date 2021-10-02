@@ -24,5 +24,16 @@ class Report():
         return f"Data de fabricação mais antiga: {min_date}\n"
 
     @classmethod
+    def get_stock_products(cls, products):
+        companies = []
+        companies_set = set()
+        for product in products:
+            companies_set.add(product['nome_da_empresa'])
+        company_quantity = 'Produtos estocados por empresa: \n'
+        for company in companies_set:
+            company_quantity += f"- {company}: {companies.count(company)}\n"
+        return company_quantity
+
+    @classmethod
     def generate(cls, products):
         raise NotImplementedError
