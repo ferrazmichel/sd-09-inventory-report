@@ -15,6 +15,4 @@ class CompleteReport(SimpleReport):
         simple_report = SimpleReport.generate(obj_list)
         names_quantity = cls.get_company_names_and_quantity(obj_list)
 
-        return (
-            f"{simple_report}\n{names_quantity}"
-        )
+        return f"{simple_report}\n{names_quantity}"
