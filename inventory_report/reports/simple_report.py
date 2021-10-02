@@ -36,8 +36,11 @@ class Manage_list:
         min_value = min(min_days)
         return list[min_days.index(min_value)].get('data_de_validade')
 
-    """conta qual empresa tem o maior volume de estoque com opçao 0
-    e todos estoques opçao n"""
+    """
+        conta volume de estoque
+        opçao 0 - empresa com maior estoque
+        opçao n - todas empresas e seus volumes
+    """
     @staticmethod
     def count_stock(list, option):
         list_names = [name['nome_da_empresa'] for name in list]

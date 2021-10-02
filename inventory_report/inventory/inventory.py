@@ -10,6 +10,23 @@ import os.path
 
 class Inventory(CompleteReport, SimpleReport):
 
+    """valida extençoes possiveis"""
+    @lru_cache
+    def valid_files(path):
+        extension = os.path.splitext(path)[1]
+
+        if(extension == '.csv'):
+            list = Inventory.import_data_csv(path)
+            return list
+        elif(extension == '.json'):
+            list = Inventory.import_data_json(path)
+            return list
+        elif(extension == '.xml'):
+            list = Inventory.import_data_xml(path)
+            return list
+        else:
+            raise ValueError('Arquivo inválido')
+
     """importa e cria uma lista do arquivo csv"""
     @lru_cache
     def import_data_csv(path):
@@ -39,18 +56,11 @@ class Inventory(CompleteReport, SimpleReport):
             read_list.append(items)
         return read_list
 
-    """escolhe o tipo da extenção do arquivo"""
+    """escolhe o tipo  do formulario e a extenção do arquivo"""
+    @lru_cache
     def import_data(path, option):
-        extension = os.path.splitext(path)[1]
 
-        if(extension == '.csv'):
-            list = Inventory.import_data_csv(path)
-        elif(extension == '.json'):
-            list = Inventory.import_data_json(path)
-        elif(extension == '.xml'):
-            list = Inventory.import_data_xml(path)
-        else:
-            raise ValueError('Arquivo inválido')
+        list = Inventory.valid_files(path)
 
         if(option == 'simples'):
             return SimpleReport.generate(list)
