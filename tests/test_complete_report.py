@@ -76,6 +76,7 @@ def test_validar_completereport_retorna_quantidade_de_estoque_correto(stock):
 
 def test_validar_completereport_retorna_formato_correto(stock):
     report = CompleteReport.generate(stock)
+    print(report)
     expected = (
         "Data de fabricação mais antiga: 2019-09-13\n"
         "Data de validade mais próxima: 2023-01-17\n"

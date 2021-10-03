@@ -5,5 +5,5 @@ class CompleteReport(SimpleReport):
     @classmethod
     def generate(cls, products):
         simple_report = SimpleReport.generate(products)
-        company_qantity = SimpleReport.get_stock_products(products)
-        return f"{simple_report}\n{company_qantity}"
+        company_quantity = SimpleReport.get_stock_products(products)
+        return f"{simple_report}\n{company_quantity}"

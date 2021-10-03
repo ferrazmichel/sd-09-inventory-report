@@ -26,11 +26,14 @@ class Report():
     @classmethod
     def get_stock_products(cls, products):
         companies = []
-        companies_set = set()
         for product in products:
-            companies_set.add(product['nome_da_empresa'])
+            companies.append(product['nome_da_empresa'])
+
+        # https://careerkarma.com/blog/python-remove-duplicates-from-list/
+        companies_rm_repeats_elm = list(dict.fromkeys(companies))
+
         company_quantity = 'Produtos estocados por empresa: \n'
-        for company in companies_set:
+        for company in companies_rm_repeats_elm:
             company_quantity += f"- {company}: {companies.count(company)}\n"
         return company_quantity
 
