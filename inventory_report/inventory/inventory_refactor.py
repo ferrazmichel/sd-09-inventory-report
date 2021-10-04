@@ -1,5 +1,5 @@
 from _collections_abc import Iterable
-from .inventory_iterator import InventoryIterator
+from inventory_report.inventory.inventory_iterator import InventoryIterator
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
