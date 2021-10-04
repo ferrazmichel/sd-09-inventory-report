@@ -4,24 +4,23 @@ from csv import DictReader
 
 import xml.etree.ElementTree as ET
 import json
-import os
 
 
 class Inventory:
     def _read_csv(file, extension):
-        if extension != 'csv':
+        if extension != "csv":
             raise ValueError("Invalid file extension")
         else:
-            return list(DictReader(file, delimiter=','))
+            return list(DictReader(file, delimiter=","))
 
     def _read_json(file, extension):
-        if extension != 'json':
+        if extension != "json":
             raise ValueError("Invalid file extension")
         else:
             return json.load(file)
 
     def _read_xml(path, extension):
-        if extension != 'xml':
+        if extension != "xml":
             raise ValueError("Invalid file extension")
         else:
             root = ET.parse(path).getroot()
@@ -41,7 +40,7 @@ class Inventory:
         }
         extension = path.split(".")[-1]
 
-        with open(path, 'r') as file:
+        with open(path, "r") as file:
             type_file = {
                 "csv": cls._read_csv(file, extension),
                 # ".json": cls._read_json(file, extension),
