@@ -9,19 +9,21 @@ import json
 class Inventory:
     def _read_csv(file, extension):
         if extension != "csv":
-            raise ValueError("Invalid file extension")
+            print("Type error")
+
         else:
             return list(DictReader(file, delimiter=","))
 
     def _read_json(file, extension):
         if extension != "json":
-            raise ValueError("Invalid file extension")
+            print("Type erro")
         else:
             return json.load(file)
 
     def _read_xml(path, extension):
         if extension != "xml":
-            raise ValueError("Invalid file extension")
+            print("Type erro")
+
         else:
             root = ET.parse(path).getroot()
             read_list = []
@@ -39,14 +41,16 @@ class Inventory:
             "completo": CompleteReport.generate,
         }
         extension = path.split(".")[-1]
-
         with open(path, "r") as file:
+            print("==============", extension)
             type_file = {
                 "csv": cls._read_csv(file, extension),
-                # ".json": cls._read_json(file, extension),
-                # ".xml": cls._read_xml(path, extension),
+                "json": cls._read_json(file, extension),
+                "xml": cls._read_xml(path, extension),
             }
 
             read_file = type_file[extension]
+            print("==============", read_file)
             file_report = type_generate[type_report](read_file)
+            print("==============", file_report)
             return file_report
