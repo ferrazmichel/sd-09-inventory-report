@@ -2,14 +2,14 @@ from datetime import date
 
 
 class SimpleReport:
-    def generate(data):  # posso receber um "JSON" e fazer um "parse" p/ string
+    def generate(data):
         today = date.today()
         manufacturing_date = []
         expiration_date = []
         inventory = []
 
         for product in data:
-            manufacturing_date.append(product["data_de_fabricação"])
+            manufacturing_date.append(product["data_de_fabricacao"])
             if product["data_de_validade"] > today.strftime("%Y-%m-%d"):
                 expiration_date.append(product["data_de_validade"])
             inventory.append(product["nome_da_empresa"])
