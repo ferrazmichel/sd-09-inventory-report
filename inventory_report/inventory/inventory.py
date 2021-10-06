@@ -16,13 +16,13 @@ class Inventory:
 
     def _read_json(file, extension):
         if extension != "json":
-            print("Type erro")
+            print("Type error")
         else:
             return json.load(file)
 
     def _read_xml(path, extension):
         if extension != "xml":
-            print("Type erro")
+            print("Type error")
 
         else:
             root = ET.parse(path).getroot()
@@ -42,7 +42,6 @@ class Inventory:
         }
         extension = path.split(".")[-1]
         with open(path, "r") as file:
-            print("==============", extension)
             type_file = {
                 "csv": cls._read_csv(file, extension),
                 "json": cls._read_json(file, extension),
@@ -50,7 +49,5 @@ class Inventory:
             }
 
             read_file = type_file[extension]
-            print("==============", read_file)
             file_report = type_generate[type_report](read_file)
-            print("==============", file_report)
             return file_report
