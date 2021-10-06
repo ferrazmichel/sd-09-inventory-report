@@ -2,12 +2,12 @@
 # [
 #   {
 #     "id": 1,
-#     "nome_do_produto": "CALENDULA OFFICINALIS FLOWERING TOP, GERANIUM MACULATUM ROOT, SODIUM CHLORIDE, THUJA OCCIDENTALIS LEAFY TWIG, ZINC, and ECHINACEA ANGUSTIFOLIA",
+#     "nome_do_produto":  ECHINACEA ANGUSTIFOLIA",
 #     "nome_da_empresa": "Forces of Nature",
 #     "data_de_fabricacao": "2020-07-04",
 #     "data_de_validade": "2023-02-09",
 #     "numero_de_serie": "FR48 2002 7680 97V4 W6FO LEBT 081",
-#     "instrucoes_de_armazenamento": "in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices    phasellus"
+#     "instrucoes_de_armazenamento": "pellentesque ultrices    phasellus"
 #   }
 # ]
 
@@ -38,10 +38,9 @@ class SimpleReport:
                          for product in products))
 
         return (
-          f'''
-          Data de fabricação mais antiga: {oldest_fabrication}
-          Data de validade mais próxima: {next_expiration}
-          Empresa com maior quantidade de produtos estocados: {more_stock}'''
+          f"Data de fabricação mais antiga: {oldest_fabrication}\n"
+          f"Data de validade mais próxima: {next_expiration}\n"
+          f"Empresa com maior quantidade de produtos estocados: {more_stock}\n"
         )
 
 # Uso do Datetime e a conversão da string para fins de calculo
