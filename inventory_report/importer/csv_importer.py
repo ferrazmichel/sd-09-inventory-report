@@ -7,6 +7,7 @@ class CsvImporter(Importer):
     def import_data(cls, path):
         extension = path.split(".")[-1]
         if extension != 'csv':
-            raise TypeError
-        with open(path, mode='r') as file:
-            return list(csv.DictReader(file))
+            raise ValueError('Arquivo inválido')
+        else:
+            with open(path, mode='r') as file:
+                return list(csv.DictReader(file))

@@ -7,6 +7,7 @@ class JsonImporter(Importer):
     def import_data(cls, path):
         extension = path.split('.')[-1]
         if extension != 'json':
-            raise TypeError
-        with open(path, mode='r') as file:
-            return json.load(file)
+            raise ValueError('Arquivo inválido')
+        else:
+            with open(path, mode='r') as file:
+                return json.load(file)
