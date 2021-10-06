@@ -1,8 +1,8 @@
-import importer
+from inventory_report.importer.importer import Importer
 import csv
 
 
-class CsvImporter(importer):
+class CsvImporter(Importer):
     @classmethod
     def import_data(cls, path):
         extension = path.split(".")[-1]

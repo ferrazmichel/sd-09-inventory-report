@@ -1,8 +1,8 @@
-import importer
+from inventory_report.importer.importer import Importer
 import json
 
 
-class JsonImporter(importer):
+class JsonImporter(Importer):
     @classmethod
     def import_data(cls, path):
         extension = path.split('.')[-1]
